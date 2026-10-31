@@ -1,0 +1,959 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Government Degree College, Khairatabad | 2nd Year B.Sc Academic Portal</title>
+  
+  <!-- Meta tags for SEO & Mobile -->
+  <meta name="description" content="Official Academic Portal for 2nd Year B.Sc (Physical Science) at Government Degree College, Khairatabad. Explore Syllabus, Unit Marks Distribution, Mind Maps, and Important Exam Questions for Semester III.">
+  <link rel="icon" type="image/webp" href="assets/khairtabad Logo (2).webp">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#eef2ff',
+              100: '#e0e7ff',
+              400: '#818cf8',
+              500: '#6366f1',
+              600: '#4f46e5',
+              700: '#4338ca',
+              900: '#1e1b4b',
+            },
+            college: {
+              gold: '#f59e0b',
+              navy: '#0c1222',
+              card: '#11192e'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts & Custom Styles -->
+  <link rel="stylesheet" href="css/styles.css">
+
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Canvas Confetti CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+
+<body class="bg-atmosphere text-slate-100 flex flex-col min-h-screen">
+
+  <!-- ======================================================================
+       HEADER & NAVIGATION BAR
+       ====================================================================== -->
+  <header class="sticky top-0 z-50 glass-panel border-b border-slate-800/80 shadow-lg">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        
+        <!-- College Logo & Title -->
+        <a href="#hero-section" class="flex items-center gap-3.5 group text-left">
+          <div class="relative">
+            <img 
+              src="assets/khairtabad Logo (2).webp" 
+              alt="Government Degree College, Khairatabad Logo" 
+              class="w-12 h-12 sm:w-14 sm:h-14 rounded-full object-cover border-2 border-indigo-400/50 shadow-md shadow-indigo-500/20 group-hover:scale-105 transition-transform duration-300 bg-white/10"
+              onerror="this.src='assets/college-logo.webp'"
+            >
+            <span class="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 bg-emerald-500 border-2 border-[#0c1222] rounded-full" title="Portal Online"></span>
+          </div>
+          <div>
+            <div class="flex items-center gap-2">
+              <h1 class="text-base sm:text-lg font-bold tracking-tight text-white group-hover:text-indigo-300 transition-colors">
+                Government Degree College, Khairatabad
+              </h1>
+            </div>
+            <p class="text-xs text-slate-400 hidden sm:block">
+              Affiliated to Osmania University • Autonomous / NAAC Accredited • Hyderabad
+            </p>
+          </div>
+        </a>
+
+        <!-- Desktop Subject Navigation Buttons (5 Subjects) -->
+        <nav class="hidden lg:flex items-center gap-1.5 bg-slate-900/90 p-1.5 rounded-2xl border border-slate-800 shadow-inner" id="desktop-subject-nav">
+          <!-- Populated dynamically via JS -->
+        </nav>
+
+        <!-- Right Side Actions & Hamburger Toggle -->
+        <div class="flex items-center gap-2">
+          <!-- Quick chapters PDF button -->
+          <a 
+            href="assets/physics chapters.pdf" 
+            target="_blank" 
+            download="GDC_Khairatabad_Physics_Chapters.pdf" 
+            class="hidden md:inline-flex items-center gap-2 px-3 py-2 text-xs font-medium rounded-xl bg-indigo-600/20 hover:bg-indigo-600/30 text-indigo-300 border border-indigo-500/30 transition-all hover:scale-105"
+            title="Download Physics Chapters PDF"
+          >
+            <i data-lucide="file-down" class="w-4 h-4"></i>
+            <span>Chapters PDF</span>
+          </a>
+
+          <!-- Mobile Hamburger Menu Button -->
+          <button 
+            id="mobile-menu-btn" 
+            class="lg:hidden p-2.5 rounded-xl bg-slate-800/80 text-slate-300 hover:text-white hover:bg-slate-700/80 border border-slate-700/70 transition-all focus:outline-none"
+            aria-label="Toggle Mobile Navigation"
+          >
+            <i data-lucide="menu" id="menu-icon-open" class="w-6 h-6"></i>
+            <i data-lucide="x" id="menu-icon-close" class="w-6 h-6 hidden"></i>
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Drawer / Dropdown -->
+    <div id="mobile-drawer" class="lg:hidden hidden border-t border-slate-800 bg-[#0c1326]/95 backdrop-blur-xl px-4 py-4 space-y-3 transition-all duration-300">
+      <div class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider px-2">
+        Select Subject (2nd Year B.Sc)
+      </div>
+      <div class="grid grid-cols-1 gap-1.5" id="mobile-subject-nav">
+        <!-- Populated dynamically via JS -->
+      </div>
+      <div class="pt-3 border-t border-slate-800/80 flex flex-col gap-2">
+        <a 
+          href="assets/physics chapters.pdf" 
+          target="_blank"
+          download="GDC_Khairatabad_Physics_Chapters.pdf"
+          class="flex items-center justify-center gap-2 w-full py-2.5 px-4 text-xs font-semibold text-indigo-200 bg-indigo-600/20 hover:bg-indigo-600/30 border border-indigo-500/30 rounded-xl"
+        >
+          <i data-lucide="file-text" class="w-4 h-4"></i>
+          <span>Download Physics Chapters PDF</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ======================================================================
+       HERO SECTION (HOME PAGE)
+       ====================================================================== -->
+  <section id="hero-section" class="hero-wrapper relative min-h-[460px] sm:min-h-[520px] lg:min-h-[580px] flex items-center justify-center text-center px-4 sm:px-6 lg:px-8 border-b border-slate-800/80">
+    
+    <!-- Hero Background Image with Subtle Zoom Hover Effect -->
+    <div 
+      class="hero-bg absolute inset-0 w-full h-full bg-cover bg-center"
+      style="background-image: url('assets/khairtabad front gate image.jpg');"
+    ></div>
+
+    <!-- Dark Gradient Overlay (rgba(0, 0, 0, 0.65) blended with dark navy) -->
+    <div class="absolute inset-0 bg-gradient-to-b from-black/75 via-black/65 to-[#070b14] backdrop-blur-[2px]"></div>
+
+    <!-- Hero Content -->
+    <div class="relative z-10 max-w-4xl mx-auto py-16 sm:py-20 flex flex-col items-center">
+      
+      <!-- Top Badges -->
+      <div class="flex flex-wrap items-center justify-center gap-2.5 mb-5 animate-fade-up">
+        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 shadow-sm backdrop-blur-md">
+          <i data-lucide="graduation-cap" class="w-3.5 h-3.5"></i>
+          <span>Academic Year 2024–2025</span>
+        </span>
+        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium bg-amber-500/20 text-amber-300 border border-amber-500/30 shadow-sm backdrop-blur-md">
+          <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+          <span>CBCS Semester III Curriculum</span>
+        </span>
+      </div>
+
+      <!-- Center Main Heading -->
+      <h2 class="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white mb-4 animate-fade-up-delay-1 leading-tight">
+        <span class="text-gradient-shimmer">2nd Year B.Sc</span>
+        <br class="hidden sm:inline" />
+        <span class="text-white">(Physical Science)</span>
+      </h2>
+
+      <!-- Subheading -->
+      <p class="text-base sm:text-xl text-slate-300 max-w-2xl mb-8 animate-fade-up-delay-2 font-normal leading-relaxed">
+        Student Academic Portal: Syllabus, Mind Maps, Marks & Important Questions
+      </p>
+
+      <!-- Key Portal Stats Chips -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 w-full max-w-2xl mb-9 animate-fade-up-delay-2">
+        <div class="p-3 rounded-xl bg-slate-900/70 border border-slate-700/60 backdrop-blur-md">
+          <div class="text-lg sm:text-xl font-bold text-indigo-400">4 Units</div>
+          <div class="text-[11px] text-slate-400 font-medium">Complete Syllabus</div>
+        </div>
+        <div class="p-3 rounded-xl bg-slate-900/70 border border-slate-700/60 backdrop-blur-md">
+          <div class="text-lg sm:text-xl font-bold text-emerald-400">80 Marks</div>
+          <div class="text-[11px] text-slate-400 font-medium">Theory Exam</div>
+        </div>
+        <div class="p-3 rounded-xl bg-slate-900/70 border border-slate-700/60 backdrop-blur-md">
+          <div class="text-lg sm:text-xl font-bold text-amber-400">Visual Map</div>
+          <div class="text-[11px] text-slate-400 font-medium">Interactive Zoom</div>
+        </div>
+        <div class="p-3 rounded-xl bg-slate-900/70 border border-slate-700/60 backdrop-blur-md">
+          <div class="text-lg sm:text-xl font-bold text-rose-400">84+ Questions</div>
+          <div class="text-[11px] text-slate-400 font-medium">Exam Question Banks</div>
+        </div>
+      </div>
+
+      <!-- Call to Action Buttons -->
+      <div class="flex flex-wrap items-center justify-center gap-3 sm:gap-4 animate-fade-up-delay-3">
+        <button 
+          id="btn-explore-subjects" 
+          class="hover-float px-6 py-3.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-sm sm:text-base shadow-lg shadow-indigo-600/30 flex items-center gap-2 transition-all cursor-pointer"
+        >
+          <span>Explore Subjects</span>
+          <i data-lucide="arrow-down" class="w-4 h-4"></i>
+        </button>
+
+        <a 
+          href="#mindmap-tab-target" 
+          id="btn-hero-mindmap"
+          class="hover-float px-5 py-3.5 rounded-xl bg-slate-800/80 hover:bg-slate-700/90 text-slate-200 border border-slate-700/80 font-medium text-sm sm:text-base backdrop-blur-md flex items-center gap-2 transition-all"
+        >
+          <i data-lucide="git-branch" class="w-4 h-4 text-cyan-400"></i>
+          <span>Interactive Mind Map</span>
+        </a>
+
+        <a 
+          href="#questions-tab-target" 
+          id="btn-hero-questions"
+          class="hover-float px-5 py-3.5 rounded-xl bg-slate-800/80 hover:bg-slate-700/90 text-slate-200 border border-slate-700/80 font-medium text-sm sm:text-base backdrop-blur-md flex items-center gap-2 transition-all"
+        >
+          <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-400"></i>
+          <span>Exam Questions</span>
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ======================================================================
+       MAIN CONTENT CONTAINER
+       ====================================================================== -->
+  <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-10" id="main-content-section">
+
+    <!-- Subject Header Strip -->
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-800">
+      <div>
+        <div class="flex items-center gap-2.5">
+          <span class="w-3 h-3 rounded-full bg-indigo-500 animate-pulse"></span>
+          <span class="text-xs font-semibold uppercase tracking-wider text-indigo-400" id="current-subject-badge">
+            Featured Subject
+          </span>
+        </div>
+        <h3 class="text-2xl sm:text-3xl font-extrabold text-white mt-1" id="current-subject-heading">
+          Physics — Paper-III: Electromagnetic Theory
+        </h3>
+        <p class="text-xs sm:text-sm text-slate-400 mt-1" id="current-subject-desc">
+          Semester III • 4 Credits • 48 Lecture Hours • 80 Max Theory Marks
+        </p>
+      </div>
+
+      <!-- Quick Action Utilities -->
+      <div class="flex items-center gap-2">
+        <button 
+          id="btn-print-page" 
+          class="px-3.5 py-2 text-xs font-medium rounded-xl bg-slate-800/80 hover:bg-slate-700 text-slate-300 border border-slate-700 flex items-center gap-1.5 transition no-print"
+          title="Print or Save as PDF"
+        >
+          <i data-lucide="printer" class="w-4 h-4"></i>
+          <span class="hidden sm:inline">Print / Save PDF</span>
+        </button>
+
+        <a 
+          href="assets/physics important questions.txt" 
+          download="Physics_Important_Questions.txt"
+          class="px-3.5 py-2 text-xs font-medium rounded-xl bg-slate-800/80 hover:bg-slate-700 text-slate-300 border border-slate-700 flex items-center gap-1.5 transition no-print"
+          title="Download Questions TXT"
+        >
+          <i data-lucide="download" class="w-4 h-4"></i>
+          <span class="hidden sm:inline">Questions TXT</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- ====================================================================
+         PLACEHOLDER VIEW: CONTENT COMING SOON (For Telugu, English, Maths, CS)
+         ==================================================================== -->
+    <div id="coming-soon-container" class="hidden glass-card rounded-2xl p-8 sm:p-12 text-center border border-slate-800 space-y-6">
+      <div class="w-20 h-20 rounded-2xl bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 flex items-center justify-center mx-auto shadow-lg shadow-indigo-500/10 animate-bounce">
+        <i data-lucide="clock" class="w-10 h-10"></i>
+      </div>
+      <div class="max-w-lg mx-auto space-y-2">
+        <div class="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-amber-500/20 text-amber-300 border border-amber-500/30">
+          Faculty Digitization in Progress
+        </div>
+        <h4 class="text-2xl sm:text-3xl font-bold text-white" id="coming-soon-title">
+          Content Coming Soon – Under Update
+        </h4>
+        <p class="text-sm text-slate-400 leading-relaxed" id="coming-soon-msg">
+          The curriculum, unit breakdowns, visual mind maps, and exam questions are currently being digitized by the faculty and will be updated shortly.
+        </p>
+      </div>
+
+      <div class="pt-4 flex flex-wrap items-center justify-center gap-3">
+        <button class="btn-switch-subject hover-float px-4 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-medium text-xs sm:text-sm flex items-center gap-2 shadow-lg shadow-indigo-600/30 transition" data-target="physics">
+          <i data-lucide="atom" class="w-4 h-4"></i>
+          <span>Explore Physics</span>
+        </button>
+        <button class="btn-switch-subject hover-float px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-medium text-xs sm:text-sm flex items-center gap-2 shadow-lg shadow-emerald-600/30 transition" data-target="maths">
+          <i data-lucide="sigma" class="w-4 h-4"></i>
+          <span>Explore Maths</span>
+        </button>
+        <button class="btn-switch-subject hover-float px-4 py-2.5 rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white font-medium text-xs sm:text-sm flex items-center gap-2 shadow-lg shadow-cyan-600/30 transition" data-target="computer-science">
+          <i data-lucide="laptop" class="w-4 h-4"></i>
+          <span>Explore Computer Science</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- ====================================================================
+         PHYSICS DASHBOARD CONTAINER
+         ==================================================================== -->
+    <div id="physics-dashboard-container" class="space-y-8">
+      
+      <!-- 3 INTERACTIVE SUB-TABS NAVIGATION -->
+      <div class="glass-panel p-2 rounded-2xl border border-slate-800 shadow-md">
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-2" role="tablist">
+          
+          <!-- Sub-Tab 1 Button -->
+          <button 
+            id="tab-btn-syllabus" 
+            class="sub-tab-btn active flex items-center justify-center gap-2.5 px-4 py-3 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 bg-indigo-600 text-white shadow-md shadow-indigo-600/30"
+            role="tab"
+            aria-selected="true"
+          >
+            <i data-lucide="book-marked" class="w-4 h-4"></i>
+            <span>1. Syllabus & Marks Distribution</span>
+          </button>
+
+          <!-- Sub-Tab 2 Button -->
+          <button 
+            id="tab-btn-mindmap" 
+            class="sub-tab-btn flex items-center justify-center gap-2.5 px-4 py-3 rounded-xl text-xs sm:text-sm font-semibold text-slate-300 hover:text-white hover:bg-slate-800/80 transition-all duration-200"
+            role="tab"
+            aria-selected="false"
+          >
+            <i data-lucide="git-branch" class="w-4 h-4 text-cyan-400"></i>
+            <span>2. Visual Mind Map</span>
+          </button>
+
+          <!-- Sub-Tab 3 Button -->
+          <button 
+            id="tab-btn-questions" 
+            class="sub-tab-btn flex items-center justify-center gap-2.5 px-4 py-3 rounded-xl text-xs sm:text-sm font-semibold text-slate-300 hover:text-white hover:bg-slate-800/80 transition-all duration-200"
+            role="tab"
+            aria-selected="false"
+          >
+            <i data-lucide="help-circle" class="w-4 h-4 text-emerald-400"></i>
+            <span id="tab-questions-title">3. Important Questions</span>
+            <span id="tab-questions-badge" class="ml-1 px-2 py-0.5 text-[10px] bg-emerald-500/20 text-emerald-300 rounded-md border border-emerald-500/30">Bank</span>
+          </button>
+
+        </div>
+      </div>
+
+      <!-- ==================================================================
+           SUB-TAB 1: SYLLABUS & MARKS DISTRIBUTION
+           Source: physics chapters.pdf
+           ================================================================== -->
+      <section id="subtab-syllabus" class="subtab-content space-y-8 animate-fade-up">
+        
+        <!-- Quick Summary Cards (Stat overview) -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div class="glass-card rounded-2xl p-4 border border-slate-800">
+            <div class="flex items-center justify-between text-slate-400 mb-2">
+              <span class="text-xs font-medium">Total Units</span>
+              <i data-lucide="layers" class="w-4 h-4 text-indigo-400"></i>
+            </div>
+            <div class="text-2xl font-bold text-white" id="stat-total-units">4 Units</div>
+            <p class="text-[11px] text-slate-400 mt-1" id="stat-total-hours">48 Total Teaching Hours</p>
+          </div>
+
+          <div class="glass-card rounded-2xl p-4 border border-slate-800">
+            <div class="flex items-center justify-between text-slate-400 mb-2">
+              <span class="text-xs font-medium">Short Questions</span>
+              <i data-lucide="check-square" class="w-4 h-4 text-cyan-400"></i>
+            </div>
+            <div class="text-2xl font-bold text-white" id="stat-short-questions">8 Questions</div>
+            <p class="text-[11px] text-slate-400 mt-1">2 Questions per Unit (Section A)</p>
+          </div>
+
+          <div class="glass-card rounded-2xl p-4 border border-slate-800">
+            <div class="flex items-center justify-between text-slate-400 mb-2">
+              <span class="text-xs font-medium">Long / Essay Questions</span>
+              <i data-lucide="file-text" class="w-4 h-4 text-amber-400"></i>
+            </div>
+            <div class="text-2xl font-bold text-white" id="stat-long-questions">4 Questions</div>
+            <p class="text-[11px] text-slate-400 mt-1">1 Essay per Unit (Section B)</p>
+          </div>
+
+          <div class="glass-card rounded-2xl p-4 border border-slate-800">
+            <div class="flex items-center justify-between text-slate-400 mb-2">
+              <span class="text-xs font-medium">Total Marks</span>
+              <i data-lucide="award" class="w-4 h-4 text-emerald-400"></i>
+            </div>
+            <div class="text-2xl font-bold text-emerald-400" id="stat-total-marks">80 Marks</div>
+            <p class="text-[11px] text-slate-400 mt-1">20 Marks Equal Weightage / Unit</p>
+          </div>
+        </div>
+
+        <!-- STYLED RESPONSIVE TABLE: Unit-wise Marks Distribution -->
+        <div class="glass-card rounded-2xl p-6 border border-slate-800 shadow-xl overflow-hidden">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6">
+            <div>
+              <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-[11px] font-semibold bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 mb-2">
+                <i data-lucide="table" class="w-3.5 h-3.5"></i>
+                <span>Official Weightage Table</span>
+              </div>
+              <h4 class="text-xl sm:text-2xl font-bold text-white">
+                Unit-wise Marks Distribution
+              </h4>
+              <p class="text-xs sm:text-sm text-slate-400" id="syllabus-source-text">
+                Extracted directly from college syllabus (Source: <code class="text-indigo-300">physics chapters.pdf</code>)
+              </p>
+            </div>
+
+            <a 
+              href="assets/physics chapters.pdf" 
+              id="syllabus-download-link"
+              target="_blank"
+              download="GDCK_Syllabus.pdf"
+              class="inline-flex items-center gap-2 px-3.5 py-2 text-xs font-semibold rounded-xl bg-slate-800 hover:bg-slate-700 text-indigo-300 border border-indigo-500/30 transition no-print"
+            >
+              <i data-lucide="file-down" class="w-4 h-4"></i>
+              <span>Download PDF Source</span>
+            </a>
+          </div>
+
+          <!-- The Table -->
+          <div class="overflow-x-auto rounded-xl border border-slate-800">
+            <table class="w-full text-left text-sm text-slate-200">
+              <thead class="bg-slate-900/90 text-xs uppercase font-semibold text-slate-400 border-b border-slate-800">
+                <tr>
+                  <th scope="col" class="py-3.5 px-4 text-center w-16">S.No</th>
+                  <th scope="col" class="py-3.5 px-6">Unit Name & Teaching Hours</th>
+                  <th scope="col" class="py-3.5 px-6 text-center">Short Questions</th>
+                  <th scope="col" class="py-3.5 px-6 text-center">Long Questions</th>
+                  <th scope="col" class="py-3.5 px-6 text-right">Total Marks</th>
+                </tr>
+              </thead>
+              <tbody id="syllabus-table-tbody" class="divide-y divide-slate-800/80">
+                
+                <!-- Unit 1 -->
+                <tr class="hover:bg-indigo-950/20 transition-colors">
+                  <td class="py-4 px-4 text-center font-bold text-slate-400">1</td>
+                  <td class="py-4 px-6 font-semibold text-white">
+                    <div class="flex items-center gap-2">
+                      <span class="w-2.5 h-2.5 rounded-full bg-blue-500"></span>
+                      <span>Electrostatics</span>
+                      <span class="text-xs font-normal text-slate-400 bg-slate-800/80 px-2 py-0.5 rounded-md border border-slate-700">11 hrs</span>
+                    </div>
+                  </td>
+                  <td class="py-4 px-6 text-center">
+                    <span class="px-2.5 py-1 rounded-lg bg-slate-800 text-indigo-300 font-semibold text-xs border border-slate-700">2</span>
+                  </td>
+                  <td class="py-4 px-6 text-center">
+                    <span class="px-2.5 py-1 rounded-lg bg-slate-800 text-cyan-300 font-semibold text-xs border border-slate-700">1</span>
+                  </td>
+                  <td class="py-4 px-6 text-right font-bold text-emerald-400">20</td>
+                </tr>
+
+                <!-- Unit 2 -->
+                <tr class="hover:bg-indigo-950/20 transition-colors">
+                  <td class="py-4 px-4 text-center font-bold text-slate-400">2</td>
+                  <td class="py-4 px-6 font-semibold text-white">
+                    <div class="flex items-center gap-2">
+                      <span class="w-2.5 h-2.5 rounded-full bg-violet-500"></span>
+                      <span>Magnetostatics</span>
+                      <span class="text-xs font-normal text-slate-400 bg-slate-800/80 px-2 py-0.5 rounded-md border border-slate-700">12 hrs</span>
+                    </div>
+                  </td>
+                  <td class="py-4 px-6 text-center">
+                    <span class="px-2.5 py-1 rounded-lg bg-slate-800 text-indigo-300 font-semibold text-xs border border-slate-700">2</span>
+                  </td>
+                  <td class="py-4 px-6 text-center">
+                    <span class="px-2.5 py-1 rounded-lg bg-slate-800 text-cyan-300 font-semibold text-xs border border-slate-700">1</span>
+                  </td>
+                  <td class="py-4 px-6 text-right font-bold text-emerald-400">20</td>
+                </tr>
+
+                <!-- Unit 3 -->
+                <tr class="hover:bg-indigo-950/20 transition-colors">
+                  <td class="py-4 px-4 text-center font-bold text-slate-400">3</td>
+                  <td class="py-4 px-6 font-semibold text-white">
+                    <div class="flex items-center gap-2">
+                      <span class="w-2.5 h-2.5 rounded-full bg-teal-500"></span>
+                      <span>Electromagnetic Induction and Electromagnetic Waves</span>
+                      <span class="text-xs font-normal text-slate-400 bg-slate-800/80 px-2 py-0.5 rounded-md border border-slate-700">13 hrs</span>
+                    </div>
+                  </td>
+                  <td class="py-4 px-6 text-center">
+                    <span class="px-2.5 py-1 rounded-lg bg-slate-800 text-indigo-300 font-semibold text-xs border border-slate-700">2</span>
+                  </td>
+                  <td class="py-4 px-6 text-center">
+                    <span class="px-2.5 py-1 rounded-lg bg-slate-800 text-cyan-300 font-semibold text-xs border border-slate-700">1</span>
+                  </td>
+                  <td class="py-4 px-6 text-right font-bold text-emerald-400">20</td>
+                </tr>
+
+                <!-- Unit 4 -->
+                <tr class="hover:bg-indigo-950/20 transition-colors">
+                  <td class="py-4 px-4 text-center font-bold text-slate-400">4</td>
+                  <td class="py-4 px-6 font-semibold text-white">
+                    <div class="flex items-center gap-2">
+                      <span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
+                      <span>Varying and alternating current, Network Theorems</span>
+                      <span class="text-xs font-normal text-slate-400 bg-slate-800/80 px-2 py-0.5 rounded-md border border-slate-700">12 hrs</span>
+                    </div>
+                  </td>
+                  <td class="py-4 px-6 text-center">
+                    <span class="px-2.5 py-1 rounded-lg bg-slate-800 text-indigo-300 font-semibold text-xs border border-slate-700">2</span>
+                  </td>
+                  <td class="py-4 px-6 text-center">
+                    <span class="px-2.5 py-1 rounded-lg bg-slate-800 text-cyan-300 font-semibold text-xs border border-slate-700">1</span>
+                  </td>
+                  <td class="py-4 px-6 text-right font-bold text-emerald-400">20</td>
+                </tr>
+
+              </tbody>
+              <!-- Table Footer: Totals -->
+              <tfoot class="bg-slate-900/90 font-bold border-t-2 border-slate-700 text-white">
+                <tr>
+                  <td colspan="2" class="py-3.5 px-6">
+                    <div class="flex items-center justify-between">
+                      <span class="uppercase tracking-wider text-xs text-slate-400">Cumulative Summary:</span>
+                      <span class="text-indigo-300 text-xs">Total Duration: 48 Hours</span>
+                    </div>
+                  </td>
+                  <td class="py-3.5 px-6 text-center text-indigo-300 font-extrabold">8 Short (Section A)</td>
+                  <td class="py-3.5 px-6 text-center text-cyan-300 font-extrabold">4 Long (Section B)</td>
+                  <td class="py-3.5 px-6 text-right text-emerald-400 text-base font-extrabold">80 Marks</td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+        </div>
+
+        <!-- DETAILED SYLLABUS TOPIC ACCORDIONS / CARDS -->
+        <div class="space-y-4">
+          <div class="flex items-center justify-between">
+            <h4 class="text-lg sm:text-xl font-bold text-white flex items-center gap-2">
+              <i data-lucide="list-tree" class="w-5 h-5 text-indigo-400"></i>
+              <span>Detailed Unit Topics & Syllabus Outline</span>
+            </h4>
+            <span class="text-xs text-slate-400">Click unit to expand / collapse</span>
+          </div>
+
+          <!-- Container populated dynamically with unit cards -->
+          <div id="syllabus-accordion-container" class="space-y-4">
+
+          <!-- Unit 1 Detail Card -->
+          <div class="glass-card rounded-2xl border border-slate-800 overflow-hidden">
+            <button class="unit-accordion-toggle w-full px-6 py-5 flex items-center justify-between text-left hover:bg-slate-800/40 transition">
+              <div class="flex items-center gap-4">
+                <div class="w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/30 text-blue-400 flex items-center justify-center font-bold text-sm">
+                  U1
+                </div>
+                <div>
+                  <h5 class="text-base sm:text-lg font-bold text-white">Unit 1: Electrostatics (11 hrs)</h5>
+                  <p class="text-xs text-slate-400">Electric fields, Gauss's law, potential & energy density</p>
+                </div>
+              </div>
+              <div class="flex items-center gap-3">
+                <span class="px-2.5 py-1 rounded-md text-xs font-semibold bg-emerald-500/10 text-emerald-300 border border-emerald-500/20">20 Marks</span>
+                <i data-lucide="chevron-down" class="w-5 h-5 text-slate-400 transition-transform duration-200 accordion-icon"></i>
+              </div>
+            </button>
+            <div class="unit-accordion-content px-6 pb-6 pt-2 border-t border-slate-800/60 space-y-4">
+              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                <strong class="text-white">Topics:</strong> Electric Field lines, electric flux, Gauss's law (Integral & differential forms), applications to linear, plane, and spherical charge distributions. Conservative & irrotational nature of E. Electric potential, relation between V and E, potential energy of a system of charges, energy density, potential for spherical charge distribution.
+              </p>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                <div class="p-3 rounded-xl bg-slate-900/60 border border-slate-800 flex items-start gap-2">
+                  <i data-lucide="check" class="w-4 h-4 text-blue-400 shrink-0 mt-0.5"></i>
+                  <span><strong>Gauss's Law Formulations:</strong> Differential (∇ · E = ρ/ε₀) and Integral form.</span>
+                </div>
+                <div class="p-3 rounded-xl bg-slate-900/60 border border-slate-800 flex items-start gap-2">
+                  <i data-lucide="check" class="w-4 h-4 text-blue-400 shrink-0 mt-0.5"></i>
+                  <span><strong>Field Conservatism:</strong> Irrotational field condition (∇ × E = 0) & E = -∇V.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Unit 2 Detail Card -->
+          <div class="glass-card rounded-2xl border border-slate-800 overflow-hidden">
+            <button class="unit-accordion-toggle w-full px-6 py-5 flex items-center justify-between text-left hover:bg-slate-800/40 transition">
+              <div class="flex items-center gap-4">
+                <div class="w-10 h-10 rounded-xl bg-violet-500/10 border border-violet-500/30 text-violet-400 flex items-center justify-center font-bold text-sm">
+                  U2
+                </div>
+                <div>
+                  <h5 class="text-base sm:text-lg font-bold text-white">Unit 2: Magnetostatics (12 hrs)</h5>
+                  <p class="text-xs text-slate-400">Biot-Savart's law, Ampere's law, B.G. galvanometer</p>
+                </div>
+              </div>
+              <div class="flex items-center gap-3">
+                <span class="px-2.5 py-1 rounded-md text-xs font-semibold bg-emerald-500/10 text-emerald-300 border border-emerald-500/20">20 Marks</span>
+                <i data-lucide="chevron-down" class="w-5 h-5 text-slate-400 transition-transform duration-200 accordion-icon"></i>
+              </div>
+            </button>
+            <div class="unit-accordion-content px-6 pb-6 pt-2 border-t border-slate-800/60 space-y-4">
+              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                <strong class="text-white">Topics:</strong> Magnetic field B, magnetic flux, Biot-Savart's law (straight conductor), Force on a point charge, properties of B (curl & divergence), solenoidal field, Integral form of Ampere's law (straight, circular, solenoidal currents). Energy stored in magnetic field, force between parallel conductors, Magnetic field intensity. Ballistic Galvanometer (torque, working, current/charge sensitivity, electromagnetic damping, critical damping resistance).
+              </p>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                <div class="p-3 rounded-xl bg-slate-900/60 border border-slate-800 flex items-start gap-2">
+                  <i data-lucide="check" class="w-4 h-4 text-violet-400 shrink-0 mt-0.5"></i>
+                  <span><strong>Biot-Savart & Ampere:</strong> Field evaluation for straight wire, loop & solenoids.</span>
+                </div>
+                <div class="p-3 rounded-xl bg-slate-900/60 border border-slate-800 flex items-start gap-2">
+                  <i data-lucide="check" class="w-4 h-4 text-violet-400 shrink-0 mt-0.5"></i>
+                  <span><strong>Ballistic Galvanometer:</strong> Complete theory, damping & charge sensitivity.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Unit 3 Detail Card -->
+          <div class="glass-card rounded-2xl border border-slate-800 overflow-hidden">
+            <button class="unit-accordion-toggle w-full px-6 py-5 flex items-center justify-between text-left hover:bg-slate-800/40 transition">
+              <div class="flex items-center gap-4">
+                <div class="w-10 h-10 rounded-xl bg-teal-500/10 border border-teal-500/30 text-teal-400 flex items-center justify-center font-bold text-sm">
+                  U3
+                </div>
+                <div>
+                  <h5 class="text-base sm:text-lg font-bold text-white">Unit 3: Electromagnetic Induction & EM Waves (13 hrs)</h5>
+                  <p class="text-xs text-slate-400">Faraday's laws, Maxwell's equations & Poynting's theorem</p>
+                </div>
+              </div>
+              <div class="flex items-center gap-3">
+                <span class="px-2.5 py-1 rounded-md text-xs font-semibold bg-emerald-500/10 text-emerald-300 border border-emerald-500/20">20 Marks</span>
+                <i data-lucide="chevron-down" class="w-5 h-5 text-slate-400 transition-transform duration-200 accordion-icon"></i>
+              </div>
+            </button>
+            <div class="unit-accordion-content px-6 pb-6 pt-2 border-t border-slate-800/60 space-y-4">
+              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                <strong class="text-white">Topics:</strong> Faraday's laws (differential & integral), Lenz's law, self and mutual induction. Continuity equation, modification of Ampere's law, displacement current, Maxwell's equations in vacuum & dielectric medium, boundary conditions, plane wave equation, transverse nature of EM waves, velocity of light, Poynting's theorem.
+              </p>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                <div class="p-3 rounded-xl bg-slate-900/60 border border-slate-800 flex items-start gap-2">
+                  <i data-lucide="check" class="w-4 h-4 text-teal-400 shrink-0 mt-0.5"></i>
+                  <span><strong>Maxwell's Field Equations:</strong> Displacement current and boundary conditions.</span>
+                </div>
+                <div class="p-3 rounded-xl bg-slate-900/60 border border-slate-800 flex items-start gap-2">
+                  <i data-lucide="check" class="w-4 h-4 text-teal-400 shrink-0 mt-0.5"></i>
+                  <span><strong>Wave Propagation:</strong> Transverse EM wave equation & Poynting theorem (S = E × H).</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Unit 4 Detail Card -->
+          <div class="glass-card rounded-2xl border border-slate-800 overflow-hidden">
+            <button class="unit-accordion-toggle w-full px-6 py-5 flex items-center justify-between text-left hover:bg-slate-800/40 transition">
+              <div class="flex items-center gap-4">
+                <div class="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/30 text-amber-400 flex items-center justify-center font-bold text-sm">
+                  U4
+                </div>
+                <div>
+                  <h5 class="text-base sm:text-lg font-bold text-white">Unit 4: Varying & Alternating Currents, Network Theorems (12 hrs)</h5>
+                  <p class="text-xs text-slate-400">LR/CR/LCR transient circuits, resonance & 5 core network theorems</p>
+                </div>
+              </div>
+              <div class="flex items-center gap-3">
+                <span class="px-2.5 py-1 rounded-md text-xs font-semibold bg-emerald-500/10 text-emerald-300 border border-emerald-500/20">20 Marks</span>
+                <i data-lucide="chevron-down" class="w-5 h-5 text-slate-400 transition-transform duration-200 accordion-icon"></i>
+              </div>
+            </button>
+            <div class="unit-accordion-content px-6 pb-6 pt-2 border-t border-slate-800/60 space-y-4">
+              <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                <strong class="text-white">Topics:</strong> Growth and decay of currents in LR, CR, and LCR circuits, critical damping. AC relation between I and V in pure R, C, and L, vector diagrams, power in AC circuits, LCR series and parallel resonant circuit, Q-factor, AC & DC motors (single & three-phase basics). Passive/active elements, power sources, T and Pi transformations, Superposition, Thevenin's, Norton's, Reciprocity, and Maximum Power Transfer theorems.
+              </p>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+                <div class="p-3 rounded-xl bg-slate-900/60 border border-slate-800 flex items-start gap-2">
+                  <i data-lucide="check" class="w-4 h-4 text-amber-400 shrink-0 mt-0.5"></i>
+                  <span><strong>AC Resonance:</strong> LCR series & parallel resonance and Q-factor derivations.</span>
+                </div>
+                <div class="p-3 rounded-xl bg-slate-900/60 border border-slate-800 flex items-start gap-2">
+                  <i data-lucide="check" class="w-4 h-4 text-amber-400 shrink-0 mt-0.5"></i>
+                  <span><strong>Theorems:</strong> Thevenin, Norton, Superposition, Maximum Power Transfer & Reciprocity.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          </div> <!-- end #syllabus-accordion-container -->
+        </div>
+
+      </section>
+
+      <!-- ==================================================================
+           SUB-TAB 2: VISUAL MIND MAP
+           Anti-Blur Pure Vector Engine & Concept Cards
+           ================================================================== -->
+      <div id="mindmap-tab-target" class="scroll-mt-24"></div>
+      <section id="subtab-mindmap" class="subtab-content space-y-6 hidden animate-fade-up">
+        
+        <!-- View Mode Switcher Header -->
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 p-4 rounded-2xl bg-slate-900/90 border border-slate-800 shadow-lg">
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
+              <span class="text-xs font-bold uppercase tracking-wider text-emerald-400">Crisp Anti-Blur Vector Mind Map</span>
+            </div>
+            <h4 id="mindmap-title-heading" class="text-lg sm:text-xl font-bold text-white mt-0.5">
+              Electromagnetic Theory — Interactive Mind Map
+            </h4>
+            <p class="text-xs text-slate-400">
+              100% scalable vector paths & DOM cards with curved Bezier connectors, instant search, unit filters, and zero blur
+            </p>
+          </div>
+
+          <div class="flex items-center flex-wrap gap-2">
+            <!-- View Mode Selector -->
+            <div class="flex items-center bg-slate-950/80 p-1 rounded-xl border border-slate-800 text-xs">
+              <button id="btn-view-vector" class="px-3.5 py-1.5 rounded-lg font-semibold bg-indigo-600 text-white shadow transition-all flex items-center gap-1.5">
+                <i data-lucide="network" class="w-3.5 h-3.5 text-cyan-300"></i>
+                <span>Visual Canvas</span>
+              </button>
+              <button id="btn-view-tree" class="px-3.5 py-1.5 rounded-lg font-medium text-slate-400 hover:text-white transition-all flex items-center gap-1.5">
+                <i data-lucide="layers" class="w-3.5 h-3.5"></i>
+                <span>Study Concept Cards</span>
+              </button>
+            </div>
+
+            <!-- Standalone Fullscreen Page Button -->
+            <a 
+              href="mindmap.html" 
+              target="_blank"
+              class="px-3.5 py-2 text-xs font-semibold rounded-xl bg-indigo-600/20 hover:bg-indigo-600/30 text-indigo-300 border border-indigo-500/30 flex items-center gap-1.5 transition hover:scale-105"
+              title="Open Dedicated Fullscreen Canvas in New Tab"
+            >
+              <i data-lucide="maximize" class="w-3.5 h-3.5"></i>
+              <span>Fullscreen Canvas</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- 1. INTERACTIVE VECTOR MIND MAP VIEW (Active by default) -->
+        <div id="mindmap-vector-view" class="space-y-4">
+          <!-- The Interactive Vector Container -->
+          <div id="mindmap-embed-container" class="w-full"></div>
+        </div>
+
+        <!-- 2. CONCEPT STUDY CARDS (OUTLINE) VIEW (Hidden by default) -->
+        <div id="mindmap-tree-view" class="hidden glass-card rounded-2xl p-6 border border-slate-800 shadow-xl space-y-4">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-800">
+            <div>
+              <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-[11px] font-semibold bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 mb-1">
+                <i data-lucide="book-open" class="w-3.5 h-3.5"></i>
+                <span>4-Unit Detailed Study Breakdown</span>
+              </div>
+              <h4 class="text-lg sm:text-xl font-bold text-white">
+                Comprehensive Topic-by-Topic Concept Breakdown
+              </h4>
+              <p class="text-xs text-slate-400">
+                All 4 units organized into clean, high-contrast readable cards
+              </p>
+            </div>
+
+            <div class="flex items-center gap-2">
+              <button 
+                id="btn-tree-expand-all" 
+                class="px-3 py-1.5 text-xs font-medium rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 transition"
+              >
+                Expand All
+              </button>
+              <button 
+                id="btn-tree-collapse-all" 
+                class="px-3 py-1.5 text-xs font-medium rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 transition"
+              >
+                Collapse All
+              </button>
+            </div>
+          </div>
+
+          <!-- Tree View Container -->
+          <div id="mindmap-tree-container" class="space-y-4 pt-2">
+            <!-- Populated via JS -->
+          </div>
+        </div>
+
+      </section>
+
+      <!-- ==================================================================
+           SUB-TAB 3: IMPORTANT QUESTIONS (36 Questions)
+           Source: physics important questions.txt
+           ================================================================== -->
+      <section id="subtab-questions" class="subtab-content space-y-8 hidden animate-fade-up">
+        
+        <!-- Filter & Search Card -->
+        <div class="glass-card rounded-2xl p-5 sm:p-6 border border-slate-800 shadow-xl space-y-5" id="questions-tab-target">
+          
+          <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+            <div>
+              <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-[11px] font-semibold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 mb-1.5">
+                <i data-lucide="check-circle" class="w-3.5 h-3.5"></i>
+                <span>Official Question Bank</span>
+              </div>
+              <h4 class="text-xl sm:text-2xl font-bold text-white">
+                Important Exam Questions & Study Checklist
+              </h4>
+              <p class="text-xs sm:text-sm text-slate-400">
+                Source: <code class="text-emerald-300">physics important questions.txt</code> • Includes Long (10M) & Short (4M) Questions with Topic Tags
+              </p>
+            </div>
+
+            <!-- Preparation Progress Tracker -->
+            <div class="bg-slate-900/90 p-4 rounded-xl border border-slate-800 w-full lg:w-80 space-y-2">
+              <div class="flex items-center justify-between text-xs">
+                <span class="font-semibold text-slate-300">Exam Preparation</span>
+                <span id="progress-percentage" class="font-bold text-emerald-400">0%</span>
+              </div>
+              <div class="w-full h-2.5 bg-slate-800 rounded-full overflow-hidden">
+                <div id="progress-bar" class="h-full bg-gradient-to-r from-indigo-500 to-emerald-400 rounded-full transition-all duration-300" style="width: 0%;"></div>
+              </div>
+              <div class="flex items-center justify-between text-[11px] text-slate-400">
+                <span id="progress-count-text">0 of 36 questions prepared</span>
+                <button id="btn-reset-checklist" class="hover:text-rose-400 transition" title="Clear all marks">Reset</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Search Input & Filters -->
+          <div class="space-y-3 pt-3 border-t border-slate-800/80">
+            <!-- Search bar -->
+            <div class="relative">
+              <input 
+                type="text" 
+                id="questions-search-input" 
+                placeholder="Search question, concept, or topic tag (e.g. Gauss's Law, Maxwell, Ballistic, Thevenin)..." 
+                class="w-full pl-10 pr-4 py-2.5 text-xs sm:text-sm bg-slate-900/90 border border-slate-700/80 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
+              >
+              <i data-lucide="search" class="w-4 h-4 text-slate-400 absolute left-3.5 top-3 pointer-events-none"></i>
+            </div>
+
+            <!-- Filters Rows -->
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
+              <!-- Unit Filter Pills -->
+              <div class="flex items-center flex-wrap gap-1.5" id="unit-filter-pills">
+                <button data-unit="all" class="unit-filter-btn px-3 py-1.5 rounded-lg font-semibold bg-indigo-600 text-white transition">
+                  All Units (36)
+                </button>
+                <button data-unit="Unit I" class="unit-filter-btn px-3 py-1.5 rounded-lg font-medium bg-slate-800 text-slate-300 hover:text-white transition">
+                  Unit I (9)
+                </button>
+                <button data-unit="Unit II" class="unit-filter-btn px-3 py-1.5 rounded-lg font-medium bg-slate-800 text-slate-300 hover:text-white transition">
+                  Unit II (8)
+                </button>
+                <button data-unit="Unit III" class="unit-filter-btn px-3 py-1.5 rounded-lg font-medium bg-slate-800 text-slate-300 hover:text-white transition">
+                  Unit III (9)
+                </button>
+                <button data-unit="Unit IV" class="unit-filter-btn px-3 py-1.5 rounded-lg font-medium bg-slate-800 text-slate-300 hover:text-white transition">
+                  Unit IV (10)
+                </button>
+              </div>
+
+              <!-- Question Type Filter Pills -->
+              <div class="flex items-center gap-1.5 bg-slate-900/80 p-1 rounded-xl border border-slate-800" id="type-filter-pills">
+                <button data-type="all" class="type-filter-btn px-2.5 py-1 rounded-lg font-semibold bg-slate-700 text-white transition">
+                  All Types
+                </button>
+                <button data-type="Long Answer" class="type-filter-btn px-2.5 py-1 rounded-lg font-medium text-slate-400 hover:text-slate-200 transition">
+                  Long (10M)
+                </button>
+                <button data-type="Short Answer" class="type-filter-btn px-2.5 py-1 rounded-lg font-medium text-slate-400 hover:text-slate-200 transition">
+                  Short (4M)
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Questions List Container (Populated via JS) -->
+        <div id="questions-list-container" class="space-y-3">
+          <!-- Populated dynamically via JS -->
+        </div>
+
+      </section>
+
+    </div>
+
+  </main>
+
+  <!-- ======================================================================
+       TOAST NOTIFICATION COMPONENT
+       ====================================================================== -->
+  <div 
+    id="portal-toast" 
+    class="fixed bottom-6 right-6 z-50 glass-card px-4 py-3 rounded-xl border border-indigo-500/40 shadow-2xl flex items-center gap-3"
+  >
+    <div class="w-7 h-7 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center" id="toast-icon">
+      <i data-lucide="check" class="w-4 h-4"></i>
+    </div>
+    <span class="text-xs sm:text-sm font-medium text-white" id="toast-msg">Question copied to clipboard!</span>
+  </div>
+
+  <!-- ======================================================================
+       FOOTER
+       ====================================================================== -->
+  <footer class="mt-auto border-t border-slate-800 bg-[#080d1a] py-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+      
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
+        <!-- Brand & College Info -->
+        <div class="flex items-center gap-3">
+          <img 
+            src="assets/khairtabad Logo (2).webp" 
+            alt="College Logo" 
+            class="w-10 h-10 rounded-full border border-indigo-500/40 object-cover"
+            onerror="this.src='assets/college-logo.webp'"
+          >
+          <div>
+            <div class="text-sm font-bold text-white">Government Degree College, Khairatabad</div>
+            <div class="text-xs text-slate-400">Department of Physics & Physical Sciences • Hyderabad, Telangana</div>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="flex flex-wrap items-center justify-center gap-4 text-xs text-slate-400">
+          <a href="#hero-section" class="hover:text-white transition">Home</a>
+          <span>•</span>
+          <a href="assets/physics chapters.pdf" target="_blank" class="hover:text-white transition">Chapters PDF</a>
+          <span>•</span>
+          <a href="mindmap.html" target="_blank" class="hover:text-white transition">Interactive Mind Map</a>
+          <span>•</span>
+          <a href="assets/physics important questions.txt" target="_blank" class="hover:text-white transition">Questions TXT</a>
+        </div>
+      </div>
+
+      <div class="pt-4 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-2 text-[11px] text-slate-500 text-center">
+        <div>
+          © 2024–2025 Government Degree College, Khairatabad. CBCS Academic Curriculum.
+        </div>
+        <div class="flex items-center gap-1.5 font-mono text-xs text-slate-400">
+          <span>design by <strong class="text-indigo-300 font-semibold tracking-wider">XVIII.I.XIII.I.XIV.I</strong></span>
+        </div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Floating Right Side Bottom Attribution Badge -->
+  <div class="fixed bottom-3 right-3 z-40 pointer-events-none select-none">
+    <div class="px-3 py-1.5 rounded-xl bg-slate-950/90 backdrop-blur-md border border-slate-800 text-[11px] font-mono text-slate-400 shadow-2xl flex items-center gap-1.5 tracking-wider">
+      <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+      <span>design by <strong class="text-indigo-300 font-semibold">XVIII.I.XIII.I.XIV.I</strong></span>
+    </div>
+  </div>
+
+  <!-- Core Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/mindmap-data.js"></script>
+  <script src="js/mindmap-engine.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

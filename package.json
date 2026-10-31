@@ -1,0 +1,21 @@
+{
+  "name": "gdc-khairatabad-academic-portal",
+  "version": "2.0.0",
+  "description": "Government Degree College, Khairatabad - 2nd Year B.Sc (Physical Science) Student Academic Portal",
+  "main": "index.html",
+  "scripts": {
+    "start": "serve . -l 3000",
+    "dev": "serve . -l 3000"
+  },
+  "keywords": [
+    "education",
+    "syllabus",
+    "physics",
+    "mindmap",
+    "khairatabad",
+    "osmania-university",
+    "bsc"
+  ],
+  "author": "Government Degree College, Khairatabad",
+  "license": "MIT"
+}

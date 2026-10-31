@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Mind Map | Electromagnetic Theory (B.Sc. Physics - Semester III)</title>
+  
+  <!-- Meta for SEO and Mobile -->
+  <meta name="description" content="High-resolution interactive vector mind map for Electromagnetic Theory (B.Sc. Physics - Semester III) at Government Degree College, Khairatabad.">
+  <link rel="icon" type="image/webp" href="assets/khairtabad Logo (2).webp">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts & Custom Mind Map Styles -->
+  <link rel="stylesheet" href="css/styles.css">
+
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body class="bg-[#060913] text-slate-100 min-h-screen flex flex-col overflow-hidden mindmap-standalone-page">
+
+  <!-- Standalone Header -->
+  <header class="h-16 border-b border-slate-800 bg-[#090e1d]/95 backdrop-blur-md px-4 sm:px-6 flex items-center justify-between z-30 shrink-0">
+    <div class="flex items-center gap-3">
+      <a href="index.html#subtab-mindmap" class="flex items-center gap-2 p-1.5 rounded-xl bg-slate-800/80 hover:bg-slate-700 text-slate-300 hover:text-white border border-slate-700 transition" title="Return to Portal">
+        <i data-lucide="arrow-left" class="w-4 h-4"></i>
+        <span class="text-xs font-semibold hidden sm:inline">Back to Portal</span>
+      </a>
+
+      <div class="h-5 w-px bg-slate-800 mx-1 hidden sm:block"></div>
+
+      <div class="flex items-center gap-2.5">
+        <img 
+          src="assets/khairtabad Logo (2).webp" 
+          alt="GDC Khairatabad Logo" 
+          class="w-9 h-9 rounded-full object-cover border border-indigo-400/50 bg-white/10"
+          onerror="this.src='assets/college-logo.webp'"
+        >
+        <div>
+          <h1 id="mindmap-header-title" class="text-xs sm:text-sm font-bold text-white tracking-tight leading-tight">
+            Electromagnetic Theory — Interactive Mind Map
+          </h1>
+          <p class="text-[11px] text-slate-400 hidden sm:block">
+            Government Degree College, Khairatabad • 2nd Year B.Sc (Physical Science)
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Subject Selector Buttons -->
+    <div class="flex items-center gap-1 bg-slate-950/80 p-1 rounded-xl border border-slate-800 text-xs">
+      <button class="mindmap-subject-btn active px-3 py-1.5 rounded-lg font-semibold bg-indigo-600 text-white transition" data-subject="physics">
+        Physics
+      </button>
+      <button class="mindmap-subject-btn px-3 py-1.5 rounded-lg font-medium text-slate-400 hover:text-white transition" data-subject="maths">
+        Maths
+      </button>
+      <button class="mindmap-subject-btn px-3 py-1.5 rounded-lg font-medium text-slate-400 hover:text-white transition" data-subject="computer-science">
+        Computer Science
+      </button>
+    </div>
+
+    <!-- Right Actions -->
+    <div class="flex items-center gap-2">
+      <button 
+        id="btn-toggle-fullscreen" 
+        class="px-3.5 py-2 rounded-xl bg-indigo-600/30 hover:bg-indigo-600/50 text-indigo-300 hover:text-white border border-indigo-500/40 text-xs font-semibold flex items-center gap-1.5 transition"
+        title="Toggle Fullscreen Mode"
+      >
+        <i data-lucide="maximize" class="w-4 h-4"></i>
+        <span>Fullscreen</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Mind Map Canvas Viewport -->
+  <main class="flex-1 w-full relative overflow-hidden">
+    <div id="mindmap-standalone-container" class="w-full h-full"></div>
+
+    <!-- Floating Right Side Bottom Attribution Badge -->
+    <div class="absolute bottom-3 right-3 z-30 pointer-events-none select-none">
+      <div class="px-3 py-1.5 rounded-xl bg-[#090e1d]/90 backdrop-blur-md border border-slate-800 text-[11px] font-mono text-slate-400 shadow-2xl flex items-center gap-1.5 tracking-wider">
+        <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+        <span>design by <strong class="text-indigo-300 font-semibold">XVIII.I.XIII.I.XIV.I</strong></span>
+      </div>
+    </div>
+  </main>
+
+  <!-- Core Scripts -->
+  <script src="js/mindmap-data.js"></script>
+  <script src="js/mindmap-engine.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      if (window.lucide) window.lucide.createIcons();
+
+      const MindMapClass = window.SimpleMindMap || window.InteractiveMindMap;
+      const subjectsMap = window.MINDMAP_DATA_SUBJECTS || {};
+
+      // Detect subject from URL parameter if present
+      const urlParams = new URLSearchParams(window.location.search);
+      let currentSubject = urlParams.get("subject") || "physics";
+      if (!subjectsMap[currentSubject]) currentSubject = "physics";
+
+      let initialData = subjectsMap[currentSubject] || window.MINDMAP_DATA;
+
+      // Initialize Mind Map
+      window.standaloneMindMap = new MindMapClass("mindmap-standalone-container", {
+        data: initialData,
+        minZoom: 0.35,
+        maxZoom: 2.6,
+        defaultZoom: 0.95
+      });
+
+      const titleEl = document.getElementById("mindmap-header-title");
+      const updateHeader = (subj) => {
+        if (titleEl && subjectsMap[subj]) {
+          titleEl.textContent = `${subjectsMap[subj].title} — Interactive Mind Map`;
+        }
+      };
+      updateHeader(currentSubject);
+
+      // Subject Switcher handler
+      const subjectBtns = document.querySelectorAll(".mindmap-subject-btn");
+      const setSubjectActiveUI = (subj) => {
+        subjectBtns.forEach(btn => {
+          if (btn.getAttribute("data-subject") === subj) {
+            btn.className = "mindmap-subject-btn active px-3 py-1.5 rounded-lg font-semibold bg-indigo-600 text-white transition";
+          } else {
+            btn.className = "mindmap-subject-btn px-3 py-1.5 rounded-lg font-medium text-slate-400 hover:text-white transition";
+          }
+        });
+      };
+      setSubjectActiveUI(currentSubject);
+
+      subjectBtns.forEach(btn => {
+        btn.addEventListener("click", () => {
+          const subj = btn.getAttribute("data-subject");
+          currentSubject = subj;
+          setSubjectActiveUI(subj);
+          if (window.standaloneMindMap && subjectsMap[subj]) {
+            window.standaloneMindMap.loadSubjectData(subjectsMap[subj]);
+            updateHeader(subj);
+          }
+        });
+      });
+
+      // Fullscreen Toggle
+      const fsBtn = document.getElementById("btn-toggle-fullscreen");
+      if (fsBtn) {
+        fsBtn.addEventListener("click", () => {
+          if (!document.fullscreenElement) {
+            document.documentElement.requestFullscreen().catch(err => console.log(err));
+          } else {
+            if (document.exitFullscreen) document.exitFullscreen();
+          }
+        });
+      }
+    });
+  </script>
+</body>
+</html>
